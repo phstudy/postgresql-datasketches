@@ -1,5 +1,5 @@
 # PostgreSQL-DataSketches
-PostgreSQL-DataSketches brings [DataSketches functions](https://datasketches.apache.org/) to PostgreSQL.
+PostgreSQL-DataSketches brings [DataSketches functions](https://datasketches.apache.org/) to PostgreSQL via [PostgreSQL Adaptor for C++ DataSketches](https://github.com/apache/incubator-datasketches-postgresql).
 
 ## Run in [Docker](https://hub.docker.com/r/study/postgresql-datasketches)
 ```bash
