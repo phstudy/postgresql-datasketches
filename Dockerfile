@@ -16,6 +16,8 @@ RUN echo "===> Adding prerequisites..."                      && \
     echo "===> Building datasketches..."                     && \
     wget http://api.pgxn.org/dist/datasketches/$DATASKETCHES_VERSION/datasketches-$DATASKETCHES_VERSION.zip && \
     unzip datasketches-$DATASKETCHES_VERSION.zip             && \
+    wget https://github.com/apache/incubator-datasketches-postgresql/commit/fc35848a683130555bb0813afa47e4ddc6c9ba97.patch && \
+    patch -d datasketches-$DATASKETCHES_VERSION -p1 <fc35848a683130555bb0813afa47e4ddc6c9ba97.patch && \
     cd datasketches-$DATASKETCHES_VERSION                    && \
     make                                                     && \
     make install                                             && \
@@ -27,7 +29,7 @@ RUN echo "===> Adding prerequisites..."                      && \
             build-essential wget unzip                          \
             postgresql-server-dev-$PG_MAJOR libpq-dev libecpg-dev  && \
     apt-get clean                                            && \
-    rm -rf datasketches-$DATASKETCHES_VERSION /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf datasketches-$DATASKETCHES_VERSION /var/lib/apt/lists/* /tmp/* /var/tmp/* fc35848a683130555bb0813afa47e4ddc6c9ba97.patch
 
 ADD /docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
 
