@@ -18,6 +18,8 @@ RUN echo "===> Adding prerequisites..."                      && \
     unzip datasketches-$DATASKETCHES_VERSION.zip             && \
     wget https://github.com/apache/incubator-datasketches-postgresql/commit/fc35848a683130555bb0813afa47e4ddc6c9ba97.patch && \
     patch -d datasketches-$DATASKETCHES_VERSION -p1 <fc35848a683130555bb0813afa47e4ddc6c9ba97.patch && \
+    wget https://github.com/apache/incubator-datasketches-cpp/commit/7b25baca55d7e0ec5949d3bb613bf37275d1ff9f.patch && \
+    patch -d datasketches-$DATASKETCHES_VERSION/datasketches-cpp -p1 <7b25baca55d7e0ec5949d3bb613bf37275d1ff9f.patch && \
     cd datasketches-$DATASKETCHES_VERSION                    && \
     make                                                     && \
     make install                                             && \
